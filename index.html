@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intikhab Rehman Security Blog | Cybersecurity Insights & Analysis</title>
+    <meta name="description" content="Professional cybersecurity blog by Intikhab Rehman covering threat detection, AI security, incident response, and modern security operations.">
+    <meta name="author" content="Intikhab Rehman">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .author-info {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav {
+            background: #34495e;
+            padding: 15px 0;
+            text-align: center;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        
+        .nav a:hover {
+            background: #2c3e50;
+        }
+        
+        .theme-toggle {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Admin Panel Styles - REMOVED */
+        
+        /* Login Modal - REMOVED */
+        
+        /* Stats section - REMOVED */
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .blog-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+        }
+        
+        .blog-header h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .blog-meta {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .blog-content {
+            padding: 20px;
+        }
+        
+        .blog-excerpt {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .blog-tags {
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .read-more {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+        
+        .read-more:hover {
+            transform: translateY(-2px);
+        }
+        
+        .domain-badge {
+            background: #27ae60;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .coming-soon {
+            opacity: 0.6;
+            filter: grayscale(50%);
+        }
+        
+        .coming-soon .read-more {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        /* Dark Mode */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
+        }
+        
+        .dark-mode .container {
+            background: #2d3748;
+            color: #e2e8f0;
+        }
+        
+        .dark-mode .nav {
+            background: #1a202c;
+        }
+        
+        .dark-mode .content {
+            background: #2d3748;
+        }
+        
+        .dark-mode .blog-card {
+            background: #4a5568;
+            color: #e2e8f0;
+        }
+        
+        .dark-mode .blog-excerpt {
+            color: #cbd5e0;
+        }
+        
+        .dark-mode .tag {
+            background: #4a5568;
+            color: #e2e8f0;
+        }
+        
+        .dark-mode .coming-soon {
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 30px 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav a {
+                display: block;
+                margin: 5px 0;
+            }
+            
+            .admin-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Security Insights Blog</h1>
+            <p>Professional cybersecurity analysis, threat intelligence, and modern security operations insights</p>
+            <div class="author-info">
+                <h3>By Intikhab Rehman</h3>
+                <p>Cybersecurity Professional | Security Analyst | Threat Detection Expert</p>
+                <p>Sharing practical insights from cybersecurity operations and threat landscape analysis</p>
+            </div>
+        </header>
+        
+        <nav class="nav">
+            <a href="#latest">Latest Posts</a>
+            <a href="#domains">Security Domains</a>
+            <a href="#about">About</a>
+            <a href="#insights">Insights</a>
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">🌙</button>
+        </nav>
+        
+        <main class="content" id="latest">
+            <h2>Latest Security Analysis & Research</h2>
+            <p>In-depth analysis of modern cybersecurity challenges, covering threat detection, security operations, vulnerability management, and incident response from a practitioner's perspective.</p>
+            
+            <div class="blog-grid" id="blogGrid">
+                <!-- Published Post -->
+                <article class="blog-card">
+                    <div class="blog-header">
+                        <div class="domain-badge">Security Operations</div>
+                        <h3>AI-Enhanced SIEM: Modern Threat Detection</h3>
+                        <div class="blog-meta">Published: <span class="current-date"></span> | 742 words</div>
+                    </div>
+                    <div class="blog-content">
+                        <p class="blog-excerpt">Exploring how artificial intelligence transforms SIEM capabilities for modern cybersecurity operations, including behavioral analytics, automated response, and practical implementation strategies for security teams.</p>
+                        <div class="blog-tags">
+                            <span class="tag">SIEM</span>
+                            <span class="tag">AI Security</span>
+                            <span class="tag">Threat Detection</span>
+                            <span class="tag">Security Operations</span>
+                        </div>
+                        <a href="ai-enhanced-siem.html" class="read-more">Read Analysis</a>
+                    </div>
+                </article>
+                
+                <!-- Coming Soon Posts -->
+                <article class="blog-card coming-soon">
+                    <div class="blog-header">
+                        <div class="domain-badge">Threat Intelligence</div>
+                        <h3>Threat Intelligence: From Collection to Action</h3>
+                        <div class="blog-meta">Coming Soon | ~650 words</div>
+                    </div>
+                    <div class="blog-content">
+                        <p class="blog-excerpt">Comprehensive guide to threat intelligence lifecycle, from data collection and analysis to actionable security operations and strategic decision-making in modern threat landscapes.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Threat Intel</span>
+                            <span class="tag">OSINT</span>
+                            <span class="tag">IOCs</span>
+                            <span class="tag">CTI</span>
+                        </div>
+                        <a href="#" class="read-more">Coming Soon</a>
+                    </div>
+                </article>
+                
+                <article class="blog-card coming-soon">
+                    <div class="blog-header">
+                        <div class="domain-badge">Vulnerability Management</div>
+                        <h3>Cloud Vulnerability Assessment Strategies</h3>
+                        <div class="blog-meta">Coming Soon | ~600 words</div>
+                    </div>
+                    <div class="blog-content">
+                        <p class="blog-excerpt">Modern approaches to vulnerability assessment in hybrid and multi-cloud environments, including container security, infrastructure scanning, and compliance considerations.</p>
+                        <div class="blog-tags">
+                            <span class="tag">Cloud Security</span>
+                            <span class="tag">Vulnerability Management</span>
+                            <span class="tag">Containers</span>
+                        </div>
+                        <a href="#" class="read-more">Coming Soon</a>
+                    </div>
+                </article>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; padding: 30px; background: #f8f9fa; border-radius: 10px;">
+                <h3>Ongoing Security Research Series</h3>
+                <p>This blog provides ongoing analysis of cybersecurity trends, practical security operations insights, and research into emerging threats and defensive technologies. Content focuses on real-world application of security principles across enterprise environments.</p>
+                <p><strong>Focus Areas:</strong> Threat Detection • Security Operations • Vulnerability Management • Incident Response • Security Architecture</p>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <h3>About Intikhab Rehman</h3>
+            <p>Cybersecurity professional with practical experience in threat detection, security operations, and defensive security implementations. Focused on translating complex security concepts into actionable insights for security teams and organizations.</p>
+            <p><strong>Expertise:</strong> Security Operations • Threat Analysis • AI Security • Incident Response • Risk Assessment</p>
+            <p style="margin-top: 20px; opacity: 0.8;">© 2025 Intikhab Rehman Security Blog. Professional cybersecurity insights and analysis.</p>
+        </footer>
+    </div>
+    
+    <!-- LOGIN MODAL - REMOVED -->
+    
+    <script>
+        // Set current dates
+        const currentDate = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        
+        document.querySelectorAll('.current-date').forEach(el => {
+            el.textContent = currentDate;
+        });
+        
+        // Dark mode functionality
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            
+            // Update button icon
+            const button = document.querySelector('.theme-toggle');
+            button.textContent = isDark ? '☀️' : '🌙';
+        }
+        
+        // Load saved theme
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('darkMode');
+            if (savedTheme === 'true') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.theme-toggle').textContent = '☀️';
+            }
+        }
+        
+        // Initialize theme on load
+        loadTheme();
+    </script>
+</body>
+</html>
