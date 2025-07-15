@@ -3,406 +3,613 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intikhab Rehman Security Blog | Cybersecurity Insights & Analysis</title>
-    <meta name="description" content="Professional cybersecurity blog by Intikhab Rehman covering threat detection, AI security, incident response, and modern security operations.">
+    <title>Security Insights | Intikhab Rehman</title>
+    <meta name="description" content="Professional cybersecurity insights covering threat detection, AI security, and modern security operations.">
     <meta name="author" content="Intikhab Rehman">
     <style>
+        :root {
+            /* Light mode colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #f1f3f4;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --text-tertiary: #515154;
+            --accent-blue: #007aff;
+            --accent-hover: #0056cc;
+            --border-light: #d2d2d7;
+            --overlay: rgba(0, 0, 0, 0.04);
+            --shadow: rgba(0, 0, 0, 0.1);
+            --card-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            /* Dark mode colors */
+            --bg-primary: #000000;
+            --bg-secondary: #1c1c1e;
+            --bg-tertiary: #2c2c2e;
+            --text-primary: #f2f2f7;
+            --text-secondary: #8e8e93;
+            --text-tertiary: #aeaeb2;
+            --accent-blue: #0a84ff;
+            --accent-hover: #409cff;
+            --border-light: #38383a;
+            --overlay: rgba(255, 255, 255, 0.04);
+            --shadow: rgba(0, 0, 0, 0.3);
+            --card-bg: #1c1c1e;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.47059;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 30px rgba(0,0,0,0.1);
-            min-height: 100vh;
-        }
-        
+
+        /* Header */
         .header {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: white;
-            padding: 60px 30px;
-            text-align: center;
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
-        
-        .header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-            max-width: 600px;
+
+        .header-content {
+            max-width: 1024px;
             margin: 0 auto;
+            padding: 0 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 52px;
         }
-        
-        .author-info {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 30px;
-            backdrop-filter: blur(10px);
+
+        .logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.022em;
         }
-        
-        .nav {
-            background: #34495e;
-            padding: 15px 0;
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--overlay);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        .hero {
+            padding: 64px 0 48px;
             text-align: center;
         }
-        
-        .nav a {
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.07143;
+            letter-spacing: -0.005em;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .hero .subtitle {
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.14286;
+            letter-spacing: 0.007em;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            max-width: 640px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .author-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--bg-secondary);
+            padding: 16px 24px;
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue), #5e5ce6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: 5px;
-            transition: background 0.3s ease;
+            font-weight: 600;
+            font-size: 18px;
         }
-        
-        .nav a:hover {
-            background: #2c3e50;
+
+        .author-info h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
         }
-        
-        .theme-toggle {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-left: 10px;
-            transition: background 0.3s ease;
+
+        .author-info p {
+            font-size: 15px;
+            color: var(--text-secondary);
         }
-        
-        .theme-toggle:hover {
-            background: rgba(255,255,255,0.2);
+
+        /* Article List */
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.003em;
+            color: var(--text-primary);
+            margin: 64px 0 32px;
         }
-        
-        /* Admin Panel Styles - REMOVED */
-        
-        /* Login Modal - REMOVED */
-        
-        /* Stats section - REMOVED */
-        
-        .content {
-            padding: 40px 30px;
-        }
-        
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .blog-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+        .articles-list {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 48px;
+        }
+
+        .article-item {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            transition: background-color 0.2s ease;
             position: relative;
         }
-        
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+        .article-item:last-child {
+            border-bottom: none;
         }
-        
-        .blog-header {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+
+        .article-item:hover {
+            background-color: var(--overlay);
+        }
+
+        .article-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .article-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .article-icon.security { background: linear-gradient(135deg, #007aff, #5e5ce6); }
+        .article-icon.threat { background: linear-gradient(135deg, #ff6b35, #f7931e); }
+        .article-icon.vulnerability { background: linear-gradient(135deg, #32d74b, #30d158); }
+
+        .article-content {
+            flex: 1;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .domain-tag {
+            background-color: var(--accent-blue);
             color: white;
-            padding: 20px;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 500;
         }
-        
-        .blog-header h3 {
-            font-size: 1.3em;
-            margin-bottom: 10px;
+
+        .word-count {
+            color: var(--text-secondary);
+            font-size: 13px;
         }
-        
-        .blog-meta {
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
-        
-        .blog-content {
-            padding: 20px;
-        }
-        
-        .blog-excerpt {
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        
-        .blog-tags {
-            margin-bottom: 15px;
-        }
-        
-        .tag {
-            display: inline-block;
-            background: #ecf0f1;
-            color: #2c3e50;
-            padding: 4px 8px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            margin-right: 5px;
-            margin-bottom: 5px;
-        }
-        
-        .read-more {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+
+        .article-title {
+            font-size: 21px;
+            font-weight: 600;
+            line-height: 1.19048;
+            letter-spacing: 0.011em;
+            color: var(--text-primary);
+            margin-bottom: 8px;
             text-decoration: none;
-            display: inline-block;
-            transition: transform 0.2s ease;
+            display: block;
         }
-        
-        .read-more:hover {
-            transform: translateY(-2px);
+
+        .article-title:hover {
+            color: var(--accent-blue);
         }
-        
-        .domain-badge {
-            background: #27ae60;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: inline-block;
+
+        .article-excerpt {
+            font-size: 17px;
+            line-height: 1.47059;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
         }
-        
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tag {
+            background-color: var(--bg-tertiary);
+            color: var(--text-tertiary);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .article-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .read-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .read-link:hover {
+            color: var(--accent-hover);
+        }
+
+        .publish-date {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
         .coming-soon {
             opacity: 0.6;
-            filter: grayscale(50%);
         }
-        
-        .coming-soon .read-more {
-            background: #95a5a6;
-            cursor: not-allowed;
+
+        .coming-soon .read-link {
+            color: var(--text-secondary);
+            cursor: default;
         }
-        
-        .footer {
-            background: #2c3e50;
-            color: white;
-            padding: 40px 30px;
+
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 32px;
+            margin: 48px 0;
             text-align: center;
         }
-        
-        /* Dark Mode */
-        body.dark-mode {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-top: 24px;
         }
-        
-        .dark-mode .container {
-            background: #2d3748;
-            color: #e2e8f0;
+
+        .stat-item h4 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 8px;
         }
-        
-        .dark-mode .nav {
-            background: #1a202c;
+
+        .stat-item p {
+            font-size: 17px;
+            color: var(--text-secondary);
         }
-        
-        .dark-mode .content {
-            background: #2d3748;
+
+        /* Footer */
+        .footer {
+            margin-top: 88px;
+            padding: 48px 0;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
         }
-        
-        .dark-mode .blog-card {
-            background: #4a5568;
-            color: #e2e8f0;
+
+        .footer-content {
+            max-width: 640px;
+            margin: 0 auto;
         }
-        
-        .dark-mode .blog-excerpt {
-            color: #cbd5e0;
+
+        .footer h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
         }
-        
-        .dark-mode .tag {
-            background: #4a5568;
-            color: #e2e8f0;
+
+        .footer p {
+            font-size: 17px;
+            line-height: 1.47059;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
         }
-        
-        .dark-mode .coming-soon {
-            opacity: 0.7;
+
+        .footer .copyright {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            margin-top: 32px;
         }
-        
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header {
-                padding: 30px 15px;
+            .header-content {
+                padding: 0 16px;
+                height: 48px;
             }
-            
-            .header h1 {
-                font-size: 2em;
+
+            .nav-links {
+                gap: 20px;
             }
-            
-            .content {
-                padding: 20px 15px;
+
+            .nav-links a {
+                font-size: 16px;
             }
-            
-            .blog-grid {
-                grid-template-columns: 1fr;
+
+            .container {
+                padding: 0 16px;
             }
-            
-            .nav a {
-                display: block;
-                margin: 5px 0;
+
+            .hero {
+                padding: 48px 0 32px;
             }
-            
-            .admin-stats {
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero .subtitle {
+                font-size: 24px;
+            }
+
+            .article-header {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .article-icon {
+                align-self: flex-start;
+            }
+
+            .article-actions {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links a:not(.theme-toggle) {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero .subtitle {
+                font-size: 21px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>Security Insights Blog</h1>
-            <p>Professional cybersecurity analysis, threat intelligence, and modern security operations insights</p>
-            <div class="author-info">
-                <h3>By Intikhab Rehman</h3>
-                <p>Cybersecurity Professional | Security Analyst | Threat Detection Expert</p>
-                <p>Sharing practical insights from cybersecurity operations and threat landscape analysis</p>
-            </div>
-        </header>
-        
-        <nav class="nav">
-            <a href="#latest">Latest Posts</a>
-            <a href="#domains">Security Domains</a>
-            <a href="#about">About</a>
-            <a href="#insights">Insights</a>
-            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">🌙</button>
-        </nav>
-        
-        <main class="content" id="latest">
-            <h2>Latest Security Analysis & Research</h2>
-            <p>In-depth analysis of modern cybersecurity challenges, covering threat detection, security operations, vulnerability management, and incident response from a practitioner's perspective.</p>
-            
-            <div class="blog-grid" id="blogGrid">
-                <!-- Published Post -->
-                <article class="blog-card">
-                    <div class="blog-header">
-                        <div class="domain-badge">Security Operations</div>
-                        <h3>AI-Enhanced SIEM: Modern Threat Detection</h3>
-                        <div class="blog-meta">Published: <span class="current-date"></span> | 742 words</div>
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-excerpt">Exploring how artificial intelligence transforms SIEM capabilities for modern cybersecurity operations, including behavioral analytics, automated response, and practical implementation strategies for security teams.</p>
-                        <div class="blog-tags">
-                            <span class="tag">SIEM</span>
-                            <span class="tag">AI Security</span>
-                            <span class="tag">Threat Detection</span>
-                            <span class="tag">Security Operations</span>
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">Security Insights</a>
+            <nav class="nav-links">
+                <a href="#articles">Articles</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Cybersecurity Analysis</h1>
+            <p class="subtitle">Professional security insights</p>
+        </section>
+
+        <section id="articles">
+            <h2 class="section-title">Latest Analysis</h2>
+            <div class="articles-list">
+                <article class="article-item">
+                    <div class="article-header">
+                        <div class="article-icon security">🛡️</div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="domain-tag">Security Operations</span>
+                                <span class="word-count">742 words</span>
+                            </div>
+                            <a href="ai_siem_article.html" class="article-title">AI-Enhanced SIEM: Modern Threat Detection</a>
+                            <p class="article-excerpt">How AI transforms SIEM capabilities for threat detection and automated response.</p>
+                            <div class="article-tags">
+                                <span class="tag">SIEM</span>
+                                <span class="tag">AI Security</span>
+                                <span class="tag">Threat Detection</span>
+                                <span class="tag">SOC</span>
+                            </div>
+                            <div class="article-actions">
+                                <a href="ai_siem_article.html" class="read-link">Read Analysis →</a>
+                                <span class="publish-date">Published today</span>
+                            </div>
                         </div>
-                        <a href="ai_siem_article.html" class="read-more">Read Analysis</a>
                     </div>
                 </article>
-                
-                <!-- Coming Soon Posts -->
-                <article class="blog-card coming-soon">
-                    <div class="blog-header">
-                        <div class="domain-badge">Threat Intelligence</div>
-                        <h3>Threat Intelligence: From Collection to Action</h3>
-                        <div class="blog-meta">Coming Soon | ~650 words</div>
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-excerpt">Comprehensive guide to threat intelligence lifecycle, from data collection and analysis to actionable security operations and strategic decision-making in modern threat landscapes.</p>
-                        <div class="blog-tags">
-                            <span class="tag">Threat Intel</span>
-                            <span class="tag">OSINT</span>
-                            <span class="tag">IOCs</span>
-                            <span class="tag">CTI</span>
+
+                <article class="article-item coming-soon">
+                    <div class="article-header">
+                        <div class="article-icon threat">🎯</div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="domain-tag">Threat Intelligence</span>
+                                <span class="word-count">~650 words</span>
+                            </div>
+                            <span class="article-title">Threat Intelligence: From Collection to Action</span>
+                            <p class="article-excerpt">From threat data collection to actionable intelligence for security operations.</p>
+                            <div class="article-tags">
+                                <span class="tag">Threat Intel</span>
+                                <span class="tag">OSINT</span>
+                                <span class="tag">IOCs</span>
+                                <span class="tag">CTI</span>
+                            </div>
+                            <div class="article-actions">
+                                <span class="read-link">Coming Soon</span>
+                                <span class="publish-date">Next week</span>
+                            </div>
                         </div>
-                        <a href="#" class="read-more">Coming Soon</a>
                     </div>
                 </article>
-                
-                <article class="blog-card coming-soon">
-                    <div class="blog-header">
-                        <div class="domain-badge">Vulnerability Management</div>
-                        <h3>Cloud Vulnerability Assessment Strategies</h3>
-                        <div class="blog-meta">Coming Soon | ~600 words</div>
-                    </div>
-                    <div class="blog-content">
-                        <p class="blog-excerpt">Modern approaches to vulnerability assessment in hybrid and multi-cloud environments, including container security, infrastructure scanning, and compliance considerations.</p>
-                        <div class="blog-tags">
-                            <span class="tag">Cloud Security</span>
-                            <span class="tag">Vulnerability Management</span>
-                            <span class="tag">Containers</span>
+
+                <article class="article-item coming-soon">
+                    <div class="article-header">
+                        <div class="article-icon vulnerability">🔍</div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <span class="domain-tag">Vulnerability Management</span>
+                                <span class="word-count">~600 words</span>
+                            </div>
+                            <span class="article-title">Cloud Vulnerability Assessment Strategies</span>
+                            <p class="article-excerpt">Vulnerability assessment strategies for cloud and hybrid environments.</p>
+                            <div class="article-tags">
+                                <span class="tag">Cloud Security</span>
+                                <span class="tag">Vulnerability Management</span>
+                                <span class="tag">Containers</span>
+                                <span class="tag">DevSecOps</span>
+                            </div>
+                            <div class="article-actions">
+                                <span class="read-link">Coming Soon</span>
+                                <span class="publish-date">This month</span>
+                            </div>
                         </div>
-                        <a href="#" class="read-more">Coming Soon</a>
                     </div>
                 </article>
             </div>
-            
-            <div style="text-align: center; margin-top: 40px; padding: 30px; background: #f8f9fa; border-radius: 10px;">
-                <h3>Ongoing Security Research Series</h3>
-                <p>This blog provides ongoing analysis of cybersecurity trends, practical security operations insights, and research into emerging threats and defensive technologies. Content focuses on real-world application of security principles across enterprise environments.</p>
-                <p><strong>Focus Areas:</strong> Threat Detection • Security Operations • Vulnerability Management • Incident Response • Security Architecture</p>
-            </div>
-        </main>
-        
-        <footer class="footer">
-            <h3>About Intikhab Rehman</h3>
-            <p>Cybersecurity professional with practical experience in threat detection, security operations, and defensive security implementations. Focused on translating complex security concepts into actionable insights for security teams and organizations.</p>
-            <p><strong>Expertise:</strong> Security Operations • Threat Analysis • AI Security • Incident Response • Risk Assessment</p>
-            <p style="margin-top: 20px; opacity: 0.8;">© 2025 Intikhab Rehman Security Blog. Professional cybersecurity insights and analysis.</p>
-        </footer>
-    </div>
-    
-    <!-- LOGIN MODAL - REMOVED -->
-    
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">© 2025 Security Insights Blog</p>
+        </div>
+    </footer>
+
     <script>
-        // Set current dates
-        const currentDate = new Date().toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-        
-        document.querySelectorAll('.current-date').forEach(el => {
-            el.textContent = currentDate;
-        });
-        
-        // Dark mode functionality
         function toggleTheme() {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', isDark);
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             
-            // Update button icon
-            const button = document.querySelector('.theme-toggle');
-            button.textContent = isDark ? '☀️' : '🌙';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update icon
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
         }
-        
+
         // Load saved theme
         function loadTheme() {
-            const savedTheme = localStorage.getItem('darkMode');
-            if (savedTheme === 'true') {
-                document.body.classList.add('dark-mode');
-                document.querySelector('.theme-toggle').textContent = '☀️';
-            }
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
         }
-        
+
         // Initialize theme on load
         loadTheme();
+
+        // Set current date
+        function updateDates() {
+            const today = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            document.querySelectorAll('.current-date').forEach(el => {
+                el.textContent = today;
+            });
+        }
+
+        updateDates();
     </script>
 </body>
 </html>
