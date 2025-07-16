@@ -185,12 +185,50 @@
         }
 
         /* Article List */
+        .articles-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 64px 0 32px;
+        }
+
         .section-title {
             font-size: 32px;
             font-weight: 700;
             letter-spacing: -0.003em;
             color: var(--text-primary);
-            margin: 64px 0 32px;
+            margin: 0;
+        }
+
+        .sort-controls {
+            display: flex;
+            background-color: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 4px;
+            gap: 2px;
+        }
+
+        .sort-btn {
+            background: none;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .sort-btn:hover {
+            color: var(--text-primary);
+        }
+
+        .sort-btn.active {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            box-shadow: 0 1px 3px var(--shadow);
         }
 
         .articles-list {
@@ -199,6 +237,7 @@
             border: 1px solid var(--border-light);
             overflow: hidden;
             margin-bottom: 48px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .article-item {
@@ -417,6 +456,17 @@
                 padding: 48px 0 32px;
             }
 
+            .articles-header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .sort-controls {
+                align-self: stretch;
+                justify-content: center;
+            }
+
             .hero h1 {
                 font-size: 40px;
             }
@@ -487,9 +537,15 @@
         </section>
 
         <section id="articles">
-            <h2 class="section-title">Latest Analysis</h2>
+            <div class="articles-header">
+                <h2 class="section-title">Latest Analysis</h2>
+                <div class="sort-controls">
+                    <button class="sort-btn active" data-sort="newest">Newest First</button>
+                    <button class="sort-btn" data-sort="oldest">Oldest First</button>
+                </div>
+            </div>
             <div class="articles-list">
-                <article class="article-item">
+                <article class="article-item" data-date="2025-07-14">
                     <div class="article-header">
                         <div class="article-icon security">🛡️</div>
                         <div class="article-content">
@@ -513,7 +569,7 @@
                     </div>
                 </article>
 
-                <article class="article-item">
+                <article class="article-item" data-date="2025-07-16">
                     <div class="article-header">
                         <div class="article-icon threat">🎯</div>
                         <div class="article-content">
@@ -537,7 +593,7 @@
                     </div>
                 </article>
 
-                <article class="article-item coming-soon">
+                <article class="article-item coming-soon" data-date="2025-07-20">
                     <div class="article-header">
                         <div class="article-icon vulnerability">🔍</div>
                         <div class="article-content">
@@ -610,6 +666,57 @@
         }
 
         updateDates();
+
+        // Article sorting functionality
+        function initSortControls() {
+            const sortButtons = document.querySelectorAll('.sort-btn');
+            const articlesList = document.querySelector('.articles-list');
+            
+            sortButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const sortType = this.dataset.sort;
+                    
+                    // Update active button
+                    sortButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Sort articles
+                    sortArticles(sortType);
+                });
+            });
+        }
+
+        function sortArticles(sortType) {
+            const articlesList = document.querySelector('.articles-list');
+            const articles = Array.from(articlesList.querySelectorAll('.article-item'));
+            
+            // Add fade out animation
+            articlesList.style.opacity = '0.6';
+            articlesList.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                articles.sort((a, b) => {
+                    const dateA = new Date(a.dataset.date);
+                    const dateB = new Date(b.dataset.date);
+                    
+                    if (sortType === 'newest') {
+                        return dateB - dateA; // Newest first
+                    } else {
+                        return dateA - dateB; // Oldest first
+                    }
+                });
+                
+                // Re-append sorted articles
+                articles.forEach(article => articlesList.appendChild(article));
+                
+                // Add fade in animation
+                articlesList.style.opacity = '1';
+                articlesList.style.transform = 'translateY(0)';
+            }, 150);
+        }
+
+        // Initialize sorting
+        initSortControls();
     </script>
 </body>
 </html>
