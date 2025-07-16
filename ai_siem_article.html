@@ -192,32 +192,6 @@
             margin-bottom: 8px;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            margin: 32px 0;
-        }
-
-        .stat-card {
-            background-color: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 24px;
-            text-align: center;
-            border: 1px solid var(--border-light);
-        }
-
-        .stat-number {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--accent-blue);
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 15px;
-            color: var(--text-secondary);
-        }
 
         /* Footer */
         .article-footer {
@@ -274,9 +248,6 @@
                 font-size: 17px;
             }
 
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -316,21 +287,6 @@
             <h2>The Evolution of SIEM Technology</h2>
             
             <p>Traditional SIEM systems relied heavily on signature-based detection and rule-driven correlation engines. While effective against known threats, these systems struggled with advanced persistent threats (APTs), zero-day exploits, and sophisticated insider threats that exhibit subtle behavioral anomalies. The sheer volume of security events in modern enterprise environments often overwhelmed security analysts, leading to alert fatigue and missed critical incidents.</p>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">85%</div>
-                    <div class="stat-label">Reduction in false positives with AI-enhanced SIEM</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">60%</div>
-                    <div class="stat-label">Faster threat detection times</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">3x</div>
-                    <div class="stat-label">Improvement in analyst productivity</div>
-                </div>
-            </div>
 
             <h2>AI-Powered Behavioral Analytics</h2>
             
