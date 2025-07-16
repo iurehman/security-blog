@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threat Intelligence: From Collection to Action | Security Insights</title>
+    <meta name="description" content="From threat data collection to actionable intelligence for security operations.">
+    <style>
+        :root {
+            /* Light mode colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --text-tertiary: #515154;
+            --accent-blue: #007aff;
+            --accent-hover: #0056cc;
+            --border-light: #d2d2d7;
+            --card-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            /* Dark mode colors */
+            --bg-primary: #000000;
+            --bg-secondary: #1c1c1e;
+            --text-primary: #f2f2f7;
+            --text-secondary: #8e8e93;
+            --text-tertiary: #aeaeb2;
+            --accent-blue: #0a84ff;
+            --accent-hover: #409cff;
+            --border-light: #38383a;
+            --card-bg: #1c1c1e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.47059;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .header-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 52px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.022em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 400;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+        }
+
+        /* Article Content */
+        .article-container {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        .article-header {
+            padding: 48px 0 32px;
+            text-align: center;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .domain-tag {
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .publish-date {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.08349;
+            letter-spacing: -0.003em;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .article-excerpt {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 400;
+            color: var(--text-secondary);
+            letter-spacing: 0.009em;
+        }
+
+        .article-content {
+            font-size: 19px;
+            line-height: 1.47368;
+            letter-spacing: 0.012em;
+            color: var(--text-primary);
+            margin-bottom: 48px;
+        }
+
+        .article-content h2 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.125;
+            letter-spacing: 0.004em;
+            color: var(--text-primary);
+            margin: 48px 0 24px;
+        }
+
+        .article-content p {
+            margin-bottom: 24px;
+        }
+
+        .article-content ul {
+            margin: 0 0 24px 32px;
+        }
+
+        .article-content li {
+            margin-bottom: 12px;
+        }
+
+        .article-content strong {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            margin: 32px 0;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 88px;
+            padding: 48px 0;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 16px;
+                height: 48px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-links a:not(.theme-toggle) {
+                display: none;
+            }
+
+            .article-container {
+                padding: 0 16px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .article-excerpt {
+                font-size: 21px;
+            }
+
+            .article-content {
+                font-size: 17px;
+            }
+
+            .article-content h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">Security Insights</a>
+            <nav class="nav-links">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="article-container">
+        <a href="index.html" class="back-link">
+            ← Back to Articles
+        </a>
+
+        <article>
+            <header class="article-header">
+                <div class="article-meta">
+                    <span class="domain-tag">Threat Intelligence</span>
+                    <span class="publish-date">January 16, 2025</span>
+                </div>
+                <h1>Threat Intelligence: From Collection to Action</h1>
+                <p class="article-excerpt">From threat data collection to actionable intelligence for security operations.</p>
+            </header>
+
+            <div class="article-content">
+                <p>Threat intelligence has evolved from a buzzword into a critical component of modern security operations. Organizations today face an overwhelming volume of threat data from countless sources. The challenge isn't finding threat information—it's transforming raw data into actionable intelligence that drives meaningful security decisions.</p>
+
+                <h2>The Intelligence Lifecycle</h2>
+                
+                <p>Effective threat intelligence follows a structured lifecycle that mirrors traditional intelligence operations. This process begins with direction—understanding what threats matter most to your organization. A financial institution's threat priorities differ vastly from those of a healthcare provider or manufacturing company.</p>
+
+                <p>Collection forms the foundation of the intelligence process. Modern security teams aggregate data from multiple sources:</p>
+
+                <ul>
+                    <li><strong>Open Source Intelligence (OSINT)</strong>: Security blogs, vulnerability databases, social media, and dark web forums</li>
+                    <li><strong>Technical feeds</strong>: IP reputation services, malware signatures, and indicators of compromise (IOCs)</li>
+                    <li><strong>Commercial intelligence</strong>: Vendor-provided threat reports and premium intelligence services</li>
+                    <li><strong>Internal telemetry</strong>: Security logs, incident data, and detection patterns unique to your environment</li>
+                </ul>
+
+                <p>Raw threat data requires processing and analysis to extract meaningful insights. This phase involves normalizing data formats, enriching indicators with context, and correlating disparate data points. Automated platforms help manage the volume, but human analysts remain essential for identifying patterns and understanding adversary motivations.</p>
+
+                <h2>From Intelligence to Operations</h2>
+
+                <p>The true value of threat intelligence emerges when it drives operational improvements. Intelligence should directly inform security controls, detection rules, and incident response procedures. When analysts identify new attack techniques targeting your industry, this intelligence should immediately translate into updated monitoring rules and security awareness training.</p>
+
+                <p>Successful operationalization requires tight integration between intelligence and security operations teams. Intelligence analysts must understand the capabilities and constraints of security tools, while SOC analysts need visibility into emerging threats relevant to their environment. Regular threat briefings and collaborative threat hunting exercises strengthen this critical relationship.</p>
+
+                <h2>Measuring Intelligence Effectiveness</h2>
+
+                <p>Organizations often struggle to quantify the value of their threat intelligence programs. Effective metrics focus on operational impact rather than volume. Consider tracking how intelligence influences security decisions: detection rules created, incidents prevented, and response times improved. Quality indicators might include the percentage of intelligence that results in actionable changes or the reduction in false positives after implementing intelligence-driven tuning.</p>
+
+                <p>Intelligence timeliness represents another crucial metric. The most detailed analysis provides limited value if it arrives after an attack. Balance the need for thorough analysis with the operational requirement for timely warnings. Different intelligence types require different timelines—tactical IOCs demand immediate distribution, while strategic assessments can accommodate longer development cycles.</p>
+
+                <h2>Building Intelligence Maturity</h2>
+
+                <p>Organizations typically progress through distinct maturity levels in their intelligence capabilities. Initial efforts often focus on consuming external feeds and basic IOC matching. As programs mature, teams develop custom collection capabilities, produce original analysis, and contribute intelligence back to the community.</p>
+
+                <p>Advanced programs integrate intelligence throughout the security lifecycle. Threat models inform architecture decisions, intelligence drives purple team exercises, and strategic assessments guide security investments. This maturity requires sustained investment in people, processes, and technology—but delivers proportional improvements in security effectiveness.</p>
+
+                <p>The future of threat intelligence lies in increased automation and machine learning, but human expertise remains irreplaceable. While algorithms excel at processing vast data volumes and identifying patterns, human analysts provide the context, creativity, and strategic thinking essential for understanding adversary intent and predicting future actions. Organizations that balance technological capabilities with skilled analysts will extract maximum value from their threat intelligence investments.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">© 2025 Security Insights Blog</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update icon
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Load saved theme
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Initialize theme on load
+        loadTheme();
+    </script>
+</body>
+</html>
