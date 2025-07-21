@@ -9,13 +9,20 @@ A professional cybersecurity blog built with clean Apple-inspired design princip
 - **Anonymous Branding**: Minimal personal information, content-focused
 - **Apple Aesthetics**: Clean, minimal design with excellent UX
 
+## 🏛️ Brand Identity
+
+- **Name**: Security Insights Blog
+- **Focus**: Defensive cybersecurity analysis
+- **Audience**: Security professionals, CompTIA auditors
+- **Goal**: CEU credits through quality content
+
 ## 🚀 Quick Start
 
 ### Local Development
 
 Start the local server:
 ```bash
-python3 -m http.server 8000
+python3 -m http.server 8001
 ```
 
 Open in browser:
@@ -53,11 +60,23 @@ security-blog/
 
 ## 🎨 Design Principles
 
-### Apple-Inspired Design
+### Design Philosophy
+- **Apple Simplicity**: Clean, minimal, no clutter
+- **Professional**: Maintain credibility for CompTIA CEU audit
+- **Human Touch**: Content should feel naturally written, not AI-generated
+- **Anonymous**: Minimal personal branding, focus on content quality
+
+### Design Standards
 - **Typography**: Apple system fonts (`-apple-system`, SF Pro Display)
-- **Colors**: Clean light/dark mode with Apple's color palette
-- **Layout**: Minimal, spacious, content-focused
-- **Interactions**: Smooth transitions, subtle hover effects
+- **Colors**: Clean light/dark mode with Apple-inspired palette
+- **Layout**: Hacker News-style list with visual icons
+- **Mobile-First**: Responsive, touch-friendly
+- **Performance**: Fast loading, minimal dependencies
+- **Spacing Philosophy**: 
+  - Tight, purposeful spacing - no excessive gaps
+  - Visual breathing room without emptiness
+  - Consistent rhythm throughout articles
+  - Easy on the eyes, clean to read
 
 ### Content Philosophy
 - **Human Voice**: Natural, professional tone (not AI-generated feel)
@@ -67,17 +86,66 @@ security-blog/
 
 ## 📝 Content Guidelines
 
+### Content Requirements
+- **18 Articles Target**: For 60 CEU farming strategy
+- **Security Focus**: SIEM, Threat Intelligence, Vulnerability Management, Incident Response
+- **Word Count**: 600-800 words per article (CEU requirements)
+- **Professional Quality**: CompTIA audit-ready content
+
 ### Article Requirements
-- **Word Count**: 600-800 words (CEU requirement)
-- **Focus Areas**: SIEM, Threat Intelligence, Vulnerability Management, Incident Response
+- **Headlines**: Clear, specific, professional
+- **Excerpts**: One concise sentence maximum
+- **Tags**: Relevant security keywords only
+- **Metadata**: Word count, domain, publish date
 - **Structure**: Clear headlines, concise paragraphs, practical insights
-- **Meta**: Domain tags, word counts, reading time
+
+### Article Template Structure
+
+Each article should follow this consistent structure:
+
+1. **Header Section**:
+   - Domain tag (e.g., "Threat Intelligence")
+   - Author attribution: "By Intikhab Rehman"
+   - Word count (e.g., "678 words")
+   - Read time (e.g., "3-4 min read")
+   - Publish date (e.g., "July 16, 2025")
+
+2. **Title & Subtitle**:
+   - Clear, specific professional title
+   - One-line subtitle explaining the article's value
+
+3. **Content Description Box** (CRITICAL - Must match template exactly):
+   - **Gray background box** placed immediately after header/subtitle
+   - **NOT a regular H2 section** - uses specific inline styling
+   - Uses H3 heading "Content Description" inside the box
+   - 2-3 paragraphs describing the article within the box
+   - Mention CEU objectives if applicable
+   - Professional summary of key takeaways
+   - **Exact styling**: Gray background (bg-secondary), 24px padding, 12px border-radius
+
+4. **Main Content**:
+   - Start with introduction paragraph after Content Description box
+   - Use H2 headers for major sections
+   - Include "Key Insight" callout boxes for important points
+   - End with forward-looking conclusion
+
+5. **Visual Consistency & Spacing** (CRITICAL for Apple aesthetic):
+   - **NO EXCESSIVE WHITE SPACE** - Tight, purposeful spacing only
+   - Header padding: 32px top, 24px bottom maximum
+   - Content Description box: 16px margin-bottom (not 32px)
+   - H2 headings: 20px top margin, 12px bottom
+   - Paragraphs: 16px margin-bottom (not 24px)
+   - Article content: 32px margin-bottom (not 64px)
+   - **Goal**: Clean, readable, no empty gaps
+   - **Test**: Screenshot should show content filling screen nicely
+   - Follow exact spacing from template articles
 
 ### Writing Style
-- Professional blogger tone
-- Authoritative yet accessible
-- Practical, real-world focused
-- Human touch (avoid robotic AI patterns)
+- **Professional Blogger Tone**: Authoritative yet accessible
+- **Concise**: Less text, more impact
+- **Human Voice**: Natural flow, avoid robotic AI patterns
+- **Technical Accuracy**: Maintain cybersecurity expertise credibility
+- **Practical Focus**: Real-world focused content
 
 ## 🌐 Deployment
 
@@ -113,11 +181,13 @@ git push origin master
 
 ### Published Content
 - ✅ **AI-Enhanced SIEM** (742 words) - Security Operations focus
+- ✅ **Threat Intelligence: From Collection to Action** (678 words) - Threat Intelligence focus
+- ✅ **Cloud Vulnerability Assessment Strategies** (615 words) - Vulnerability Management focus
 
-### Planned Articles (17 remaining)
-- Threat Intelligence: From Collection to Action (~650 words)
-- Cloud Vulnerability Assessment Strategies (~600 words)
-- [15 more articles planned across 5 security domains]
+### Planned Articles (15 remaining)
+- Incident Response Automation Frameworks (~700 words)
+- Zero Trust Architecture Implementation (~650 words)
+- [13 more articles planned across 5 security domains]
 
 ## 🎯 SEO & Performance
 
