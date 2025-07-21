@@ -147,6 +147,89 @@ Each article should follow this consistent structure:
 - **Technical Accuracy**: Maintain cybersecurity expertise credibility
 - **Practical Focus**: Real-world focused content
 
+### LinkedIn Post Template (For article promotion)
+```
+Just published: [Article Title]
+📖 [blog-link]
+
+[One compelling sentence about the problem/challenge]
+
+This article covers:
+• [Key point 1]
+• [Key point 2] 
+• [Key point 3]
+• [Key point 4]
+
+#CloudSecurity #VulnerabilityManagement #DevSecOps #Cybersecurity #InfoSec
+```
+
+**Format Requirements:**
+- Keep it short and scannable
+- Start with "Just published:" for consistency
+- Use book emoji 📖 before link
+- One problem statement sentence
+- Exactly 4 bullet points with key insights
+- End with relevant hashtags (5 max)
+
+### Article Documentation Template (For CySA+ CEU records)
+
+Save each article as: `[article-name-2-words].txt`
+
+```
+Blog Post Documentation for CySA+ CEU Submission
+
+URL: [full-article-url]
+
+Article Details:
+- Title: [Full Article Title]
+- Author: Intikhab Rehman
+- Publication Date: [ACTUAL publish date - must match when article was published]
+- Word Count: [XXX]+ words
+
+Content Description:
+[2-3 sentences describing article content, methodologies covered, and key takeaways]
+
+CySA+ Exam Objectives Covered:
+- [Objective 1.X] [Description]
+- [Objective 2.X] [Description]
+- [Objective 3.X] [Description]
+- [Continue as needed...]
+
+Relevance to CySA+: 
+[Percentage and brief explanation of how content relates to exam objectives]
+```
+
+**Documentation Requirements:**
+- Create .txt file for each published article
+- Use 2-word filename (e.g., "threat-intelligence.txt", "cloud-vulnerability.txt")
+- Include all CySA+ exam objectives covered
+- Maintain records for CEU audit purposes
+
+## 📋 Article Publishing Workflow
+
+**Complete 3-step process for each new article:**
+
+### Step 1: Publish Article on Security Blog
+- Write and format article following template structure
+- Update index.html with new article entry
+- Commit and push to deploy to Vercel
+
+### Step 2: Create LinkedIn Post
+- Use LinkedIn Post Template from README.md
+- Follow exact format: "Just published:" + 4 bullet points
+- Post on LinkedIn to promote article
+
+### Step 3: Create Documentation File
+- Use Article Documentation Template from README.md
+- Save as `[article-name-2-words].txt`
+- Include all CySA+ exam objectives covered
+- Store for CEU audit evidence
+
+**This 3-step workflow ensures:**
+- ✅ Article is live and accessible
+- ✅ Article gets social media promotion
+- ✅ Complete records for CompTIA CEU audit
+
 ## 🌐 Deployment
 
 ### Live Site
