@@ -1,0 +1,12 @@
+Just published: Incident Response Automation Frameworks
+📖 https://security-blog-wheat.vercel.app/incident_response_automation_article.html
+
+Security teams face thousands of daily alerts, with analysts spending 80% of their time on repetitive tasks.
+
+This article covers:
+• SOAR platform architecture and integration strategies
+• Playbook development for automated threat response
+• Automated triage workflows that reduce false positives by 90%
+• Metrics to measure and optimize automation success
+
+#IncidentResponse #SOAR #SecurityAutomation #Cybersecurity #InfoSec

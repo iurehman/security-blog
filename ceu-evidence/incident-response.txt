@@ -1,0 +1,24 @@
+Blog Post Documentation for CySA+ CEU Submission
+
+URL: https://security-blog-wheat.vercel.app/incident_response_automation_article.html
+
+Article Details:
+- Title: Incident Response Automation Frameworks
+- Author: Intikhab Rehman
+- Publication Date: July 25, 2025
+- Word Count: 724+ words
+
+Content Description:
+This article examines modern incident response automation frameworks, covering SOAR platforms, orchestration workflows, and playbook development strategies. It provides practical guidance on implementing automated response procedures that reduce mean time to response (MTTR) while improving consistency and coverage across security operations.
+
+CySA+ Exam Objectives Covered:
+- [Objective 4.1] Explain the importance of the incident response process
+- [Objective 4.2] Given a scenario, apply the appropriate incident response procedure
+- [Objective 4.3] Given an incident, analyze potential indicators of compromise
+- [Objective 4.4] Given a scenario, utilize basic digital forensics techniques
+- [Objective 1.7] Given a scenario, implement controls to mitigate attacks and software vulnerabilities
+- [Objective 2.4] Explain the threats and vulnerabilities associated with operating in the cloud
+- [Objective 5.3] Explain the importance of frameworks, policies, procedures, and controls
+
+Relevance to CySA+: 
+95% - This article directly addresses multiple CySA+ incident response objectives, focusing on automated response procedures, security orchestration implementation, and incident management lifecycle optimization. The content aligns with exam requirements for understanding modern SOC operations and automated threat response capabilities.

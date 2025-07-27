@@ -1,0 +1,23 @@
+Blog Post Documentation for CySA+ CEU Submission
+
+URL: https://security-blog-wheat.vercel.app/articles/ai_siem_article.html
+
+Article Details:
+- Title: AI-Enhanced SIEM: Modern Threat Detection
+- Author: Intikhab Rehman
+- Publication Date: July 14, 2025
+- Word Count: 742+ words
+
+Content Description:
+Comprehensive analysis of artificial intelligence integration in Security Information and Event Management platforms, covering threat detection methodologies, behavioral analytics, automated response procedures, and practical implementation strategies for security operations centers.
+
+CySA+ Exam Objectives Covered:
+- [Objective 1.1] Explain the importance of threat data and intelligence
+- [Objective 1.2] Given a scenario, utilize threat intelligence to support organizational security
+- [Objective 1.3] Given a scenario, perform vulnerability management activities
+- [Objective 1.4] Given a scenario, analyze the output from common vulnerability assessment tools
+- [Objective 3.1] Explain the importance of the incident response process
+- [Objective 3.2] Given a scenario, apply the appropriate incident response procedure
+
+Relevance to CySA+: 
+80% - Over 80% of content directly relates to CySA+ exam objectives focusing on security operations, threat intelligence, and incident response procedures.

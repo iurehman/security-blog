@@ -1,0 +1,23 @@
+Blog Post Documentation for CySA+ CEU Submission
+
+URL: https://security-blog-wheat.vercel.app/articles/threat_intelligence_article.html
+
+Article Details:
+- Title: Threat Intelligence: From Collection to Action
+- Author: Intikhab Rehman
+- Publication Date: July 16, 2025
+- Word Count: 678+ words
+
+Content Description:
+Comprehensive guide to threat intelligence lifecycle, from data collection and analysis to actionable security operations and strategic decision-making in modern threat landscapes. Covers OSINT methodologies, IOC analysis, threat actor profiling, and intelligence-driven defense strategies.
+
+CySA+ Exam Objectives Covered:
+- [Objective 1.1] Explain the importance of threat data and intelligence
+- [Objective 1.2] Given a scenario, utilize threat intelligence to support organizational security
+- [Objective 1.5] Given a scenario, analyze the output from common vulnerability assessment tools
+- [Objective 2.1] Given a scenario, implement threat hunting techniques
+- [Objective 3.1] Explain the importance of the incident response process
+- [Objective 4.1] Given a scenario, communicate findings to stakeholders
+
+Relevance to CySA+: 
+85% - Over 85% of content directly relates to CySA+ exam objectives focusing on threat intelligence operations, data collection methodologies, and intelligence-driven security operations.

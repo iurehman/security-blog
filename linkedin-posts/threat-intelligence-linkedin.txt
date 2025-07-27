@@ -1,0 +1,12 @@
+Just published: Threat Intelligence: From Collection to Action
+📖 https://security-blog-wheat.vercel.app/articles/threat_intelligence_article.html
+
+Raw threat data without context is just noise—organizations need actionable intelligence to defend against sophisticated adversaries.
+
+This article covers:
+• Building effective threat intelligence programs from scratch
+• OSINT collection techniques and automated IOC enrichment
+• Threat actor profiling and attribution methodologies
+• Operationalizing intelligence for proactive defense strategies
+
+#ThreatIntelligence #OSINT #CTI #IOCs #Cybersecurity

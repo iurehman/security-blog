@@ -52,10 +52,22 @@ php -S localhost:8000
 ```
 security-blog/
 ├── index.html              # Homepage with article listings
-├── ai_siem_article.html     # First published article (742 words)
-├── CLAUDE.md               # Design & writing guidelines
 ├── README.md               # This documentation
-└── .git/                   # Git repository
+├── articles/               # All HTML article files
+│   ├── ai_siem_article.html
+│   ├── threat_intelligence_article.html
+│   ├── cloud_vulnerability_article.html
+│   └── incident_response_automation_article.html
+├── ceu-evidence/           # CEU documentation files for CompTIA
+│   ├── ai-siem.txt
+│   ├── threat-intelligence.txt
+│   ├── cloud-vulnerability.txt
+│   └── incident-response.txt
+└── linkedin-posts/         # LinkedIn promotion posts
+    ├── ai-siem-linkedin.txt
+    ├── threat-intelligence-linkedin.txt
+    ├── cloud-vulnerability-linkedin.txt
+    └── incident-response-linkedin.txt
 ```
 
 ## 🎨 Design Principles
@@ -91,6 +103,26 @@ security-blog/
 - **Security Focus**: SIEM, Threat Intelligence, Vulnerability Management, Incident Response
 - **Word Count**: 600-800 words per article (CEU requirements)
 - **Professional Quality**: CompTIA audit-ready content
+
+### CompTIA CEU Requirements (IMPORTANT)
+
+Based on official CompTIA CEU submission guidelines:
+
+- **Minimum Word Count**: 500+ words per blog post to earn 1 CEU
+- **Maximum CEUs**: 1 CEU per blog post (regardless of length)
+- **Timing**: Articles must be written and published during your three-year renewal cycle
+- **Relevance**: At least 50% of content must relate to one or more exam objectives for the certification you're renewing
+- **Documentation Required**:
+  1. URL or copy of the published work with your name and date published
+  2. Description of the content covered
+- **Activity Type**: "Published a Blog (500+ words) for CySA+ CEUs"
+- **Certification**: CompTIA CySA+ ce
+
+**Important Notes:**
+- Each article with 500+ words earns exactly 1 CEU
+- Our target of 600-800 words ensures we exceed the minimum requirement
+- Documentation files (like incident-response.txt) must be maintained for audit purposes
+- The CEU Assessment tool will guide you through requirements step-by-step
 
 ### Article Requirements
 - **Headlines**: Clear, specific, professional
@@ -209,26 +241,60 @@ Relevance to CySA+:
 
 **Complete 3-step process for each new article:**
 
-### Step 1: Publish Article on Security Blog
-- Write and format article following template structure
-- Update index.html with new article entry
-- Commit and push to deploy to Vercel
+### Step 1: Write & Publish Article
+1. **Create article HTML file** in `articles/` folder
+   - Follow the exact template structure from existing articles
+   - Ensure 600-800 words (minimum 500 for CEU credit)
+   - Include all required sections (Content Description box, tags, etc.)
+   - Name file: `topic_name_article.html`
 
-### Step 2: Create LinkedIn Post
-- Use LinkedIn Post Template from README.md
-- Follow exact format: "Just published:" + 4 bullet points
-- Post on LinkedIn to promote article
+2. **Update index.html**
+   - Add new article entry with proper metadata
+   - Include: icon emoji, domain tag, word count, title, excerpt, tags
+   - Ensure link points to `articles/[filename].html`
 
-### Step 3: Create Documentation File
-- Use Article Documentation Template from README.md
-- Save as `[article-name-2-words].txt`
-- Include all CySA+ exam objectives covered
-- Store for CEU audit evidence
+### Step 2: Create CEU Documentation
+1. **Create CEU evidence file** in `ceu-evidence/` folder
+   - Use Article Documentation Template (see below)
+   - Name file: `[two-word-topic].txt` (e.g., "incident-response.txt")
+   - Include all CySA+ objectives covered
+   - Calculate relevance percentage
+
+### Step 3: Create LinkedIn Promotion
+1. **Create LinkedIn post** in `linkedin-posts/` folder
+   - Use LinkedIn Post Template (see below)
+   - Name file: `[topic]-linkedin.txt`
+   - Follow exact format with 4 bullet points
+   - Include relevant hashtags
+
+### Folder Organization
+```
+articles/          → HTML article files
+ceu-evidence/      → CompTIA CEU documentation
+linkedin-posts/    → Social media promotion posts
+```
+
+**File Naming Conventions:**
+- Articles: `topic_name_article.html`
+- CEU docs: `topic-name.txt` (2 words with hyphen)
+- LinkedIn: `topic-name-linkedin.txt`
 
 **This 3-step workflow ensures:**
-- ✅ Article is live and accessible
-- ✅ Article gets social media promotion
-- ✅ Complete records for CompTIA CEU audit
+- ✅ Consistent article quality and structure
+- ✅ Complete CEU documentation for CompTIA audit
+- ✅ Professional social media promotion
+- ✅ Organized file management
+
+### Quick Checklist for New Articles
+- [ ] Article HTML created in `articles/` folder
+- [ ] Article has 600-800 words
+- [ ] Content Description box included
+- [ ] All required metadata present
+- [ ] index.html updated with new entry
+- [ ] CEU documentation created in `ceu-evidence/`
+- [ ] LinkedIn post created in `linkedin-posts/`
+- [ ] All files follow naming conventions
+- [ ] Git commit and push completed
 
 ## 🌐 Deployment
 
