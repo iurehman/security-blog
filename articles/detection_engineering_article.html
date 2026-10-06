@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detection Engineering with MITRE ATT&amp;CK | Security Insights</title>
+    <meta name="description" content="Building high-fidelity, testable detections mapped to real attacker behavior.">
+    <style>
+        :root {
+            /* Light mode colors */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #f1f3f4;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --text-tertiary: #515154;
+            --accent-blue: #007aff;
+            --accent-hover: #0056cc;
+            --border-light: #d2d2d7;
+            --overlay: rgba(0, 0, 0, 0.04);
+            --shadow: rgba(0, 0, 0, 0.1);
+            --card-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            /* Dark mode colors */
+            --bg-primary: #000000;
+            --bg-secondary: #1c1c1e;
+            --bg-tertiary: #2c2c2e;
+            --text-primary: #f2f2f7;
+            --text-secondary: #8e8e93;
+            --text-tertiary: #aeaeb2;
+            --accent-blue: #0a84ff;
+            --accent-hover: #409cff;
+            --border-light: #38383a;
+            --overlay: rgba(255, 255, 255, 0.04);
+            --shadow: rgba(0, 0, 0, 0.3);
+            --card-bg: #1c1c1e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.47059;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            font-size: 17px;
+            font-weight: 400;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            background-color: rgba(var(--bg-primary-rgb, 255, 255, 255), 0.8);
+        }
+
+        [data-theme="dark"] .header {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .header-content {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .site-title {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .site-title:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--overlay);
+        }
+
+        .theme-icon {
+            font-size: 20px;
+        }
+
+        /* Article Layout */
+        .article-wrapper {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 20px 64px;
+        }
+
+        /* Article Header */
+        .article-header {
+            padding: 32px 0 24px;
+            border-bottom: 1px solid var(--border-light);
+            margin-bottom: 32px;
+        }
+
+        .article-title {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .domain-tag {
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .publish-date {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .article-excerpt {
+            font-size: 21px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            line-height: 1.381;
+            margin-top: 12px;
+        }
+
+        /* Article Content */
+        .article-content {
+            font-size: 17px;
+            line-height: 1.52947;
+            letter-spacing: -0.011em;
+            margin-bottom: 32px;
+        }
+
+        .article-content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin: 20px 0 12px;
+            color: var(--text-primary);
+        }
+
+        .article-content h3 {
+            font-size: 21px;
+            font-weight: 600;
+            margin: 32px 0 16px;
+            color: var(--text-primary);
+        }
+
+        .article-content p {
+            margin-bottom: 16px;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 0 0 24px 32px;
+        }
+
+        .article-content li {
+            margin-bottom: 12px;
+        }
+
+        .article-content strong {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .key-point {
+            background-color: var(--bg-secondary);
+            border-left: 4px solid var(--accent-blue);
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 8px;
+        }
+
+        .key-point p {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        /* Tags */
+        .article-tags {
+            padding: 32px 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            margin: 32px 0;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tag {
+            background-color: var(--bg-tertiary);
+            color: var(--text-tertiary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 48px;
+            padding: 32px 0;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .footer .copyright {
+            font-size: 13px;
+            color: var(--text-tertiary);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 16px;
+                height: 48px;
+            }
+
+            .article-wrapper {
+                padding: 0 16px;
+            }
+
+            .article-header {
+                padding: 32px 0 24px;
+            }
+
+            .article-title {
+                font-size: 32px;
+            }
+
+            .article-excerpt {
+                font-size: 19px;
+            }
+
+            .article-content {
+                font-size: 17px;
+            }
+
+            .article-content h2 {
+                font-size: 24px;
+            }
+
+            .key-point {
+                padding: 20px;
+                margin: 24px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-meta {
+                gap: 12px;
+            }
+
+            .site-title {
+                font-size: 19px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="site-title">Security Insights</a>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="article-wrapper">
+        <a href="../index.html" class="back-link">← Back to Articles</a>
+        
+        <article>
+            <header class="article-header">
+                <h1 class="article-title">Detection Engineering with MITRE ATT&amp;CK</h1>
+                <div class="article-meta">
+                    <span class="domain-tag">Security Operations</span>
+                    <span style="color: var(--text-secondary); font-size: 14px;">By Intikhab Rehman</span>
+                    <span style="color: var(--text-secondary); font-size: 14px;">635 words</span>
+                    <span style="color: var(--text-secondary); font-size: 14px;">3-4 min read</span>
+                    <span class="publish-date">October 5, 2026</span>
+                </div>
+                <p class="article-excerpt">Building high-fidelity, testable detections mapped to real attacker behavior.</p>
+            </header>
+            
+            <div style="background-color: var(--bg-secondary); padding: 20px; border-radius: 12px; margin-bottom: 16px; font-size: 16px; line-height: 1.5;">
+                <h3 style="margin-bottom: 16px; color: var(--text-primary); font-size: 18px; font-weight: 600;">Content Description</h3>
+                <p style="margin-bottom: 16px; color: var(--text-primary);">This article explains detection engineering as a disciplined practice: mapping detections to MITRE ATT&amp;CK techniques, following a repeatable build-test-tune lifecycle, and measuring detection quality. The content addresses CySA+ objectives including malicious activity indicators, threat intelligence and threat-hunting concepts, attack methodology frameworks, process improvement, and the use of AI in security operations.</p>
+                <p style="color: var(--text-primary);">It covers practical methods for reducing false positives, validating rules through adversary emulation, and using AI responsibly, and feeding post-incident lessons back into the detection backlog to strengthen long-term defensive capability.</p>
+            </div>
+
+            <div class="article-content">
+                <p>Most SOCs do not suffer from a lack of alerts. They suffer from a lack of good ones. Detection engineering treats detections as maintained software: designed against known attacker behavior, tested, measured, and retired when they stop earning their keep.</p>
+
+                <h2>Climb the Pyramid of Pain</h2>
+
+                <p>Atomic indicators of compromise such as hashes, IP addresses, and domains are trivial for attackers to change. The Pyramid of Pain ranks indicators by how much it hurts an adversary to replace them, and tactics, techniques, and procedures (TTPs) sit at the top. Behavioral detections, such as abuse of living off the land binaries (LOLBins), impossible travel for a compromised identity, or unusual data exfiltration, force attackers to change how they operate rather than just what infrastructure they use.</p>
+
+                <div class="key-point">
+                    <p><strong>Key Insight:</strong> A detection tied to a technique survives tool changes and attacker tweaks. A detection tied to a single atomic indicator expires the moment the indicator does.</p>
+                </div>
+
+                <h2>Anchor Rules to Attack Frameworks</h2>
+
+                <p>Mapping detections to MITRE ATT&amp;CK gives teams a shared vocabulary and a coverage map. Pairing it with the Cyber Kill Chain and the Diamond Model of Intrusion Analysis shows where in an intrusion a rule fires and which adversary, capability, infrastructure, and victim relationships it reveals. Coverage reporting then shifts from "how many rules do we have" to "which attacker behaviors can we see."</p>
+
+                <h2>The Detection Lifecycle</h2>
+
+                <p>Mature teams follow a repeatable cycle rather than writing rules ad hoc:</p>
+
+                <ul>
+                    <li><strong>Hypothesis:</strong> Define the behavior to detect, drawing on threat intelligence, threat hunting, or incident findings.</li>
+                    <li><strong>Data check:</strong> Confirm the required telemetry exists, such as process creation events, authentication logs, or DNS queries.</li>
+                    <li><strong>Build:</strong> Write logic in a portable format like Sigma so it translates across SIEM platforms.</li>
+                    <li><strong>Test:</strong> Replay the technique with adversary emulation and verify the alert fires.</li>
+                    <li><strong>Tune and deploy:</strong> Baseline normal activity, add exclusions deliberately, and document ownership.</li>
+                </ul>
+
+                <h2>Rule and Alert Tuning</h2>
+
+                <p>A noisy rule is a failed rule, because analysts learn to ignore it. Tune with evidence: review closed alerts, identify the benign patterns behind them, and narrow the logic with context such as parent process, user role, or asset criticality. Data enrichment from threat intelligence and asset inventories adds that context automatically.</p>
+
+                <p>Where precision is hard, correlate several low-confidence events instead of alerting on each. A new admin account followed by unusual remote logins is far more convincing than either event alone.</p>
+
+                <p>Every rule also needs an owner, a severity, a playbook or runbook describing the response, and a review date. Standardized runbooks and SOAR automation turn a fired alert into a consistent, fast response.</p>
+
+                <h2>Using AI Responsibly</h2>
+
+                <p>AI can accelerate detection work by correlating events, analyzing log files, comparing artifacts, and drafting rule logic or investigation notes. It also introduces risk. Models can hallucinate plausible but wrong detections, sensitive log data can be exposed to external services, and attackers can poison training data or craft malicious prompts. Treat AI output as a draft, validate it through the same testing lifecycle as any rule, and follow an organizational AI usage policy covering data handling and regulatory compliance.</p>
+
+                <div class="key-point">
+                    <p><strong>Key Insight:</strong> Untested detections, whether human-written or AI-generated, create false confidence. Validation through purple team exercises proves that alerts fire when they should.</p>
+                </div>
+
+                <h2>Measure and Close the Loop</h2>
+
+                <p>Useful metrics include true positive rate per rule, mean time to detect, ATT&amp;CK technique coverage, and the share of rules validated in the past quarter. Rules that never fire deserve scrutiny: either the behavior is absent or the detection is broken.</p>
+
+                <p>Every incident is a detection opportunity. Post-incident reviews should ask which stage of the attack could have been seen earlier, then convert the answer into a new or improved rule. Version control, peer review, and automated testing bring software discipline to the process, giving teams faster deployment, safe rollback, and an auditable history of why each rule exists.</p>
+            </div>
+
+            <div class="article-tags">
+                <div class="tags-container">
+                    <span class="tag">Detection Engineering</span>
+                    <span class="tag">MITRE ATT&amp;CK</span>
+                    <span class="tag">Sigma</span>
+                    <span class="tag">SIEM</span>
+                    <span class="tag">Threat Hunting</span>
+                    <span class="tag">SOC Operations</span>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">© 2026 Security Insights Blog</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update icon
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Load saved theme
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            const icon = document.querySelector('.theme-icon');
+            icon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        }
+
+        // Initialize theme on load
+        loadTheme();
+    </script>
+</body>
+</html>

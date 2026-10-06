@@ -1,0 +1,12 @@
+Just published: Detection Engineering with MITRE ATT&CK
+📖 https://security-blog-wheat.vercel.app/articles/detection_engineering_article.html
+
+Most SOCs don't lack alerts, they lack good ones.
+
+This article covers:
+• Mapping detections to ATT&CK techniques instead of fragile indicators
+• A repeatable hypothesis-to-tuning detection lifecycle
+• Layering signals to cut false positives
+• Metrics that prove your detections actually work
+
+#DetectionEngineering #MITREATTACK #SOC #Cybersecurity #InfoSec

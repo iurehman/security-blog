@@ -57,17 +57,20 @@ security-blog/
 │   ├── ai_siem_article.html
 │   ├── threat_intelligence_article.html
 │   ├── cloud_vulnerability_article.html
-│   └── incident_response_automation_article.html
+│   ├── incident_response_automation_article.html
+│   └── detection_engineering_article.html
 ├── ceu-evidence/           # CEU documentation files for CompTIA
 │   ├── ai-siem.txt
 │   ├── threat-intelligence.txt
 │   ├── cloud-vulnerability.txt
-│   └── incident-response.txt
+│   ├── incident-response.txt
+│   └── detection-engineering.txt
 └── linkedin-posts/         # LinkedIn promotion posts
     ├── ai-siem-linkedin.txt
     ├── threat-intelligence-linkedin.txt
     ├── cloud-vulnerability-linkedin.txt
-    └── incident-response-linkedin.txt
+    ├── incident-response-linkedin.txt
+    └── detection-engineering-linkedin.txt
 ```
 
 ## 🎨 Design Principles
@@ -222,7 +225,7 @@ Content Description:
 [2-3 sentences describing article content, methodologies covered, and key takeaways]
 
 CySA+ Exam Objectives Covered:
-- [Objective 1.X] [Description]
+- [Objective 1.X] [Description - use CS0-004 wording from the tracking section above]
 - [Objective 2.X] [Description]
 - [Objective 3.X] [Description]
 - [Continue as needed...]
@@ -236,6 +239,73 @@ Relevance to CySA+:
 - Use 2-word filename (e.g., "threat-intelligence.txt", "cloud-vulnerability.txt")
 - Include all CySA+ exam objectives covered
 - Maintain records for CEU audit purposes
+
+## 🗂️ CySA+ Objectives & CEU Tracking
+
+**Update this section every time an article is published, and review it fully every 2 years (see checklist below).**
+
+### Exam Version Tracking
+
+| Version | Status | Key Dates | Objectives Source |
+|---------|--------|-----------|-------------------|
+| CS0-003 (V3) | Retiring | Retires Dec 22, 2026 | CompTIA CS0-003 objectives |
+| CS0-004 (V4) | Current | Launched June 23, 2026 | CompTIA CySA+ CS0-004 V4 Exam Objectives, Document Version 2.0 |
+
+*Version dates were supplied by the blog owner; objectives wording was verified against the official CS0-004 objectives PDF (Oct 5, 2026).*
+
+### CS0-004 Domains
+
+| Domain | Weight |
+|--------|--------|
+| 1.0 Security Operations | 34% |
+| 2.0 Vulnerability Management | 26% |
+| 3.0 Incident Response and Management | 24% |
+| 4.0 Reporting and Communication | 16% |
+
+### CS0-004 Objective Numbers (use these in evidence files)
+
+- **1.1** Explain concepts related to system and network architecture in security
+- **1.2** Given a scenario, analyze indicators of potential malicious activity
+- **1.3** Given a scenario, use tools to determine malicious activity
+- **1.4** Explain threat intelligence and threat-hunting concepts
+- **1.5** Explain the importance of efficiency and process improvement in security operations
+- **1.6** Summarize concepts related to the use of AI in security operations *(new in CS0-004)*
+- **2.1** Given a scenario, implement the appropriate vulnerability scanning method
+- **2.2** Given a scenario, analyze output from vulnerability assessment tools
+- **2.3** Given a scenario, analyze data to prioritize and mitigate vulnerabilities
+- **2.4** Explain concepts related to control types, risks, and vulnerability management
+- **3.1** Summarize concepts related to attack methodology frameworks
+- **3.2** Summarize the incident response process
+- **3.3** Given a scenario, implement incident response techniques
+- **4.1** Explain the importance of vulnerability management reporting and communication
+- **4.2** Explain the importance of security operations and incident response reporting and communication
+
+> Objective **1.1-1.5 numbering overlaps with CS0-003 but wording differs** (e.g., CS0-003 1.4 was threat intel vs. hunting, 3.x covered different IR topics). Always cite the exam version in the evidence file.
+
+### Article Tracker
+
+| # | Article | Published | Words | Exam Version Cited | Objectives Covered | Evidence File |
+|---|---------|-----------|-------|--------------------|--------------------|---------------|
+| 1 | AI-Enhanced SIEM: Modern Threat Detection | Jul 14, 2025 | 742 | Older numbering (pre-CS0-004) | See file | `ceu-evidence/ai-siem.txt` |
+| 2 | Threat Intelligence: From Collection to Action | Jul 16, 2025 | 678 | Older numbering (pre-CS0-004) | See file | `ceu-evidence/threat-intelligence.txt` |
+| 3 | Cloud Vulnerability Assessment Strategies | Jul 20, 2025 | 615 | Older numbering (pre-CS0-004) | See file | `ceu-evidence/cloud-vulnerability.txt` |
+| 4 | Incident Response Automation Frameworks | Jul 25, 2025 | 724 | Older numbering (pre-CS0-004) | See file | `ceu-evidence/incident-response.txt` |
+| 5 | Detection Engineering with MITRE ATT&CK | Oct 5, 2026 | 635 | CS0-004 | 1.2, 1.3, 1.4, 1.5, 1.6, 3.1 | `ceu-evidence/detection-engineering.txt` |
+
+**CEU progress:** 5 articles published = 5 CEUs (1 CEU per 500+ word article). Target: 60 CEUs.
+**Renewal cycle start / end dates:** _fill in from your CompTIA certification record_ (articles must be published inside the cycle).
+
+### Every-2-Years Maintenance Checklist
+
+Next review due: **October 2028** (then every 2 years).
+
+- [ ] Check CompTIA's CySA+ page for a new exam version and its objectives PDF
+- [ ] Update the version table, domain weights, and objective list above
+- [ ] Confirm CompTIA's CEU rules still match (500+ words, 1 CEU per blog, 50% relevance)
+- [ ] Review older evidence files; note which exam version each one cites
+- [ ] Verify article URLs still load on the live site
+- [ ] Confirm articles still fall within the current renewal cycle
+- [ ] Update CEU progress count and the Article Tracker
 
 ## 📋 Article Publishing Workflow
 
@@ -332,11 +402,12 @@ git push origin master
 - ✅ **AI-Enhanced SIEM** (742 words) - Security Operations focus
 - ✅ **Threat Intelligence: From Collection to Action** (678 words) - Threat Intelligence focus
 - ✅ **Cloud Vulnerability Assessment Strategies** (615 words) - Vulnerability Management focus
+- ✅ **Incident Response Automation Frameworks** (724 words) - Incident Response focus
+- ✅ **Detection Engineering with MITRE ATT&CK** (635 words) - Security Operations focus (CS0-004)
 
-### Planned Articles (15 remaining)
-- Incident Response Automation Frameworks (~700 words)
+### Planned Articles (13 remaining)
 - Zero Trust Architecture Implementation (~650 words)
-- [13 more articles planned across 5 security domains]
+- [11 more articles planned across 5 security domains]
 
 ## 🎯 SEO & Performance
 
