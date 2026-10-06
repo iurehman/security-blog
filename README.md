@@ -292,7 +292,7 @@ Relevance to CySA+:
 | 4 | Incident Response Automation Frameworks | Jul 25, 2025 | 724 | Older numbering (pre-CS0-004) | See file | `ceu-evidence/incident-response.txt` |
 | 5 | Detection Engineering with MITRE ATT&CK | Oct 5, 2026 | 635 | CS0-004 | 1.2, 1.3, 1.4, 1.5, 1.6, 3.1 | `ceu-evidence/detection-engineering.txt` |
 
-**CEU progress:** 5 articles published = 5 CEUs (1 CEU per 500+ word article). Target: 60 CEUs.
+**CEU progress:** see `CPE-TRACKER.md` (currently 6 / 60). Blog articles: 5 published, 1 CEU each. Target: 60 CEUs.
 **Renewal cycle start / end dates:** _fill in from your CompTIA certification record_ (articles must be published inside the cycle).
 
 ### Every-2-Years Maintenance Checklist
